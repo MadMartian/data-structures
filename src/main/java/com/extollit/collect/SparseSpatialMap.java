@@ -197,12 +197,13 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
         this.key0 = null;
     }
 
-    public void cullOutside(IntAxisAlignedBox bounds) {
+    public Iterable<T> cullOutside(IntAxisAlignedBox bounds) {
         final LesserCoarseKey
                 min = lesserKey(bounds.min),
                 max = lesserKey(bounds.max);
 
         final int size0 = this.size;
+        final List<Collection<T>> cullees = new LinkedList<Collection<T>>();
 
         final Iterator<Entry<LesserCoarseKey, Map<GreaterCoarseKey, T>>> i = this.space.entrySet().iterator();
         while (i.hasNext()) {
@@ -211,6 +212,7 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
             final Map<GreaterCoarseKey, T> subMap = entry.getValue();
             if (key.x < min.x || key.y < min.y || key.z < min.z || key.x > max.x || key.y > max.y || key.z > max.z) {
                 i.remove();
+                cullees.add(subMap.values());
                 size -= subMap.size();
             }
         }
@@ -219,6 +221,8 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
             this.inner0 = null;
             this.key0 = null;
         }
+
+        return new FlattenIterable<T>(cullees);
     }
 
     private abstract class AbstractIterator<V> extends FilterIterable.Iter<V> implements Iterator<V> {
