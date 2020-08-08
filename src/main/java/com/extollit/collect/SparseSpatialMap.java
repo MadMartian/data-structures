@@ -137,7 +137,7 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
         if (value == null || coords == null)
             throw new NullPointerException();
 
-        final LesserCoarseKey lesserKey = lesserKey(coords);
+        final LesserCoarseKey lesserKey = lesserKey(this.key0 = coords);
         Map<GreaterCoarseKey, T> inner = this.inner0 = this.space.get(lesserKey);
         if (inner == null)
             this.space.put(lesserKey, inner = this.inner0 = new HashMap<GreaterCoarseKey, T>(this.order << 2, INNER_LOAD_FACTOR));
@@ -158,8 +158,10 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
         final Map<GreaterCoarseKey, T> inner;
         if (coords.equals(this.key0))
             inner = this.inner0;
-        else
+        else {
+            this.key0 = coords;
             inner = this.inner0 = this.space.get(lesserKey);
+        }
 
         if (inner != null) try {
             final GreaterCoarseKey greaterKey = greaterKey(coords);
