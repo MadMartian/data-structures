@@ -56,4 +56,9 @@ public class IntAxisAlignedBoxTests {
     public void arbitrary1() {
         assertThat(true, new IntAxisAlignedBox(-287, Integer.MIN_VALUE >> 1, -260, 225, Integer.MAX_VALUE >> 1, 252), new IntAxisAlignedBox(-13, -1, 4, 7, 19, 24));
     }
+
+    @Test
+    public void arbitrary2() {
+        assertThat(true, new IntAxisAlignedBox(-88, -23, -81, 161, 118, 81), new IntAxisAlignedBox(80, 0, -88, 87, 7, -81));
+    }
 }

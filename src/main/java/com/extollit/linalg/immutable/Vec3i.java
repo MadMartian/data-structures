@@ -180,4 +180,17 @@ public final class Vec3i implements ISpatialRegion {
     public boolean truncatedEquals(double x, double y, double z) {
         return this.x == (int)x && this.y == (int)y && this.z == (int)z;
     }
+
+    public static Vec3i min(Vec3i min, Vec3i max) {
+        return new Vec3i(Math.min(min.x, max.x), Math.min(min.y, max.y), Math.min(min.z, max.z));
+    }
+    public static Vec3i max(Vec3i min, Vec3i max) {
+        return new Vec3i(Math.max(min.x, max.x), Math.max(min.y, max.y), Math.max(min.z, max.z));
+    }
+    public static Vec3i min(int x0, int y0, int z0, int xN, int yN, int zN) {
+        return new Vec3i(Math.min(x0, xN), Math.min(y0, yN), Math.min(z0, zN));
+    }
+    public static Vec3i max(int x0, int y0, int z0, int xN, int yN, int zN) {
+        return new Vec3i(Math.max(x0, xN), Math.max(y0, yN), Math.max(z0, zN));
+    }
 }

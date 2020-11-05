@@ -18,11 +18,12 @@ public class IntAxisAlignedBox extends AbstractSpatialRegion implements ISpatial
     public final Vec3i min, max;
 
     public IntAxisAlignedBox(int x0, int y0, int  z0, int xN, int yN, int zN) {
-        this(new Vec3i(x0, y0, z0), new Vec3i(xN, yN, zN));
+        this.min = Vec3i.min(x0, y0, z0, xN, yN, zN);
+        this.max = Vec3i.max(x0, y0, z0, xN, yN, zN);
     }
     public IntAxisAlignedBox(Vec3i min, Vec3i max) {
-        this.min = min;
-        this.max = max;
+        this.min = Vec3i.min(min, max);
+        this.max = Vec3i.max(min, max);
     }
 
     @Override
@@ -91,26 +92,31 @@ public class IntAxisAlignedBox extends AbstractSpatialRegion implements ISpatial
     }
 
     public boolean intersects(IntAxisAlignedBox other) {
+        return intersects(other.min, other.max);
+    }
+
+    public boolean intersects(final Vec3i min, final Vec3i max) {
+        return intersects(min.x, min.y, min.z, max.x, max.y, max.z);
+    }
+
+    public boolean intersects(final int x0, final int y0, final int z0, final int xN, final int yN, final int zN) {
         return
             (
-                lineDeltaFactor(this.min.x, this.max.x, other.min.x, other.max.x) |
-                lineDeltaFactor(this.min.y, this.max.y, other.min.y, other.max.y) |
-                lineDeltaFactor(this.min.z, this.max.z, other.min.z, other.max.z)
+                lineDeltaFactor(this.min.x, this.max.x, x0, xN) |
+                lineDeltaFactor(this.min.y, this.max.y, y0, yN) |
+                lineDeltaFactor(this.min.z, this.max.z, z0, zN)
             ) == 0;
     }
 
     private static int lineDeltaFactor(int leftMin, int leftMax, int rightMin, int rightMax) {
-        assert leftMin >= Integer.MIN_VALUE >> 1 && leftMax <= Integer.MAX_VALUE >> 1;
-        assert rightMin >= Integer.MIN_VALUE >> 1 && rightMax <= Integer.MAX_VALUE >> 1;
-
         final int
-                leftWidth = leftMax - leftMin,
-                rightWidth = rightMax - rightMin,
+                leftWidth = leftMax - leftMin + 1,
+                rightWidth = rightMax - rightMin + 1,
 
                 leftMid = leftMin + ((leftMax - leftMin) >> 1),
                 rightMid = rightMin + ((rightMax - rightMin) >> 1);
 
-        return (FastMath.abs(leftMid - rightMid) << 1) / (leftWidth + rightWidth + 1);
+        return (FastMath.abs(leftMid - rightMid) << 1) / (leftWidth + rightWidth);
     }
 
     public IntAxisAlignedBox intersection(IntAxisAlignedBox other) {
