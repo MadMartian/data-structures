@@ -170,7 +170,7 @@ public class OctTreeTests {
         tree.add(KAPPA, "kappa");
         Iterator<OctTree.Entry<String>> iterator = tree.findAll(new IntAxisAlignedBox(-5, -5, -5, 40, 40, 40));
         Set<String> actual = actualize(iterator);
-        assertEquals(new HashSet<String>(Arrays.asList("eta", "theta", "iota", "kappa")), actual);
+        assertEquals(new HashSet<String>(Arrays.asList("eta", "theta", "iota", "kappa", "gamma")), actual);
     }
 
     @Test
