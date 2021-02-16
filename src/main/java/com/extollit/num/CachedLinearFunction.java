@@ -1,5 +1,7 @@
 package com.extollit.num;
 
+import static java.lang.Math.floor;
+
 public class CachedLinearFunction< F extends ILinearFunction > implements ILinearFunction {
     public final F host;
     public final float min, max, step;
@@ -28,7 +30,7 @@ public class CachedLinearFunction< F extends ILinearFunction > implements ILinea
 
     @Override
     public final double f(double x) {
-        return this.cacheFunc[FastMath.floor((clamp(x) - this.min) / this.step)];
+        return this.cacheFunc[(int)floor((clamp(x) - this.min) / this.step)];
     }
 
     protected double clamp(double x) {

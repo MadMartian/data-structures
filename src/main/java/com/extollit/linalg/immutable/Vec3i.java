@@ -6,9 +6,10 @@
 package com.extollit.linalg.immutable;
 
 import com.extollit.linalg.ISpatialRegion;
-import com.extollit.num.FastMath;
 
 import java.text.MessageFormat;
+
+import static java.lang.Math.abs;
 
 public final class Vec3i implements ISpatialRegion {
     public static final Vec3i ZERO = new Vec3i(0, 0, 0);
@@ -170,7 +171,7 @@ public final class Vec3i implements ISpatialRegion {
     }
 
     public int taxiTo(Vec3i other) {
-        return FastMath.abs(other.x - x) + FastMath.abs(other.y - y) + FastMath.abs(other.z - z);
+        return abs(other.x - x) + abs(other.y - y) + abs(other.z - z);
     }
 
     public static Vec3i truncated(Vec3d other) {

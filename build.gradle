@@ -6,7 +6,7 @@ repositories {
 }
 
 group 'com.extollit'
-version '2.10'
+version '2.11'
 
 apply plugin: 'java'
 

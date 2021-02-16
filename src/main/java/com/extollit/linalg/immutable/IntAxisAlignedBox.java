@@ -7,7 +7,8 @@ package com.extollit.linalg.immutable;
 
 import com.extollit.linalg.AbstractSpatialRegion;
 import com.extollit.linalg.ISpatialRegion;
-import com.extollit.num.FastMath;
+
+import static java.lang.Math.abs;
 
 /**
  * main
@@ -116,7 +117,7 @@ public class IntAxisAlignedBox extends AbstractSpatialRegion implements ISpatial
                 leftMid = leftMin + ((leftMax - leftMin) >> 1),
                 rightMid = rightMin + ((rightMax - rightMin) >> 1);
 
-        return (FastMath.abs(leftMid - rightMid) << 1) / (leftWidth + rightWidth);
+        return (abs(leftMid - rightMid) << 1) / (leftWidth + rightWidth);
     }
 
     public IntAxisAlignedBox intersection(IntAxisAlignedBox other) {

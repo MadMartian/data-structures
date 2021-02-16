@@ -10,6 +10,7 @@ package com.extollit.num;
  * <p/>
  * Created by jonathan on 25/12/16.
  */
+@Deprecated
 public class FastMath {
     public static int abs(int value) {
         final int mask = value >> (Integer.SIZE - 1);
