@@ -83,10 +83,22 @@ public final class Vec3d implements ISpatialRegion {
         this.z = other.z;
     }
 
+    public void set(com.extollit.linalg.mutable.Vec3d other) {
+        this.x = other.x;
+        this.y = other.y;
+        this.z = other.z;
+    }
+
     public void set(com.extollit.linalg.immutable.Vec3i other) {
         this.x = other.x;
         this.y = other.y;
         this.z = other.z;
+    }
+
+    public void set(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public final void sub(Vec3d other)
