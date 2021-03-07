@@ -142,12 +142,14 @@ public class DiscreteRayStepper implements Iterator<DiscreteRayStepper.Result> {
 
     @Override
     public boolean hasNext() {
+        final com.extollit.linalg.immutable.Vec3d direction = this.direction;
         final Vec3i cell = this.cell;
         final com.extollit.linalg.immutable.Vec3i
             target = this.target,
             delta = this.delta;
 
-        return (cell.x - target.x) * delta.x <= 0 &&
+        return !(direction.x == 0 && direction.y == 0 && direction.z == 0) &&
+               (cell.x - target.x) * delta.x <= 0 &&
                (cell.y - target.y) * delta.y <= 0 &&
                (cell.z - target.z) * delta.z <= 0;
     }
