@@ -2,6 +2,7 @@ package com.extollit.linalg.mutable;
 
 import com.extollit.linalg.AbstractSpatialRegion;
 import com.extollit.linalg.ISpatialRegion;
+import com.extollit.tuple.SymmetricPair;
 
 /**
  * Created by jonny on 10/09/2016.
@@ -112,92 +113,170 @@ public final class AxisAlignedBBox extends AbstractSpatialRegion implements ISpa
         );
     }
 
-    private Vec3d intersection(final double d1, final double d2, final double p1x, final double p1y, final double p1z, final double p2x, final double p2y, final double p2z) {
+    private com.extollit.linalg.immutable.Vec3d intersection(final double d1, final double d2, final double p1x, final double p1y, final double p1z, final double p2x, final double p2y, final double p2z) {
         if (d1 * d2 >= 0 || d1 == d2)
             return null;
 
         final double f = -d1 / (d2 - d1);
-        return new Vec3d(
+        return new com.extollit.linalg.immutable.Vec3d(
             p1x + (p2x - p1x) * f,
             p1y + (p2y - p1y) * f,
             p1z + (p2z - p1z) * f
         );
     }
 
-    private Vec3d intersection(final double d1, final double d2, final com.extollit.linalg.mutable.Vec3d p1, com.extollit.linalg.mutable.Vec3d p2) {
+    private com.extollit.linalg.immutable.Vec3d intersection(final double d1, final double d2, final com.extollit.linalg.mutable.Vec3d p1, com.extollit.linalg.mutable.Vec3d p2) {
         return intersection(d1, d2, p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
     }
 
-    private Vec3d intersection(final double d1, final double d2, final com.extollit.linalg.immutable.Vec3d p1, com.extollit.linalg.immutable.Vec3d p2) {
+    private com.extollit.linalg.immutable.Vec3d intersection(final double d1, final double d2, final com.extollit.linalg.immutable.Vec3d p1, com.extollit.linalg.immutable.Vec3d p2) {
         return intersection(d1, d2, p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
     }
 
+    @Deprecated
     public Vec3d intersection(com.extollit.linalg.mutable.Vec3d p0, com.extollit.linalg.mutable.Vec3d pN) {
         final Vec3d
                 min = this.min,
                 max = this.max;
 
-        Vec3d i;
+        com.extollit.linalg.immutable.Vec3d i;
 
         i = intersection(p0.x - min.x, pN.x - min.x, p0, pN);
         if (i != null && i.z > min.z && i.z < max.z && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.y - min.y, pN.y - min.y, p0, pN);
         if (i != null && i.z > min.z && i.z < max.z && i.x > min.x && i.x < max.x)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.z - min.z, pN.z - min.z, p0, pN);
         if (i != null && i.x > min.x && i.x < max.x && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.x - max.x, pN.x - max.x, p0, pN);
         if (i != null && i.z > min.z && i.z < max.z && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.y - max.y, pN.y - max.y, p0, pN);
         if (i != null && i.z > min.z && i.z < max.z && i.x > min.x && i.x < max.x)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.z - max.z, pN.z - max.z, p0, pN);
         if (i != null && i.x > min.x && i.x < max.x && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         return null;
     }
 
+    @Deprecated
     public Vec3d intersection(com.extollit.linalg.immutable.Vec3d p0, com.extollit.linalg.immutable.Vec3d pN) {
         final Vec3d
             min = this.min,
             max = this.max;
 
-        Vec3d i;
+        com.extollit.linalg.immutable.Vec3d i;
 
         i = intersection(p0.x - min.x, pN.x - min.x, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.z > min.z && i.z < max.z && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.y - min.y, pN.y - min.y, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.z > min.z && i.z < max.z && i.x > min.x && i.x < max.x)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.z - min.z, pN.z - min.z, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.x > min.x && i.x < max.x && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.x - max.x, pN.x - max.x, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.z > min.z && i.z < max.z && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.y - max.y, pN.y - max.y, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.z > min.z && i.z < max.z && i.x > min.x && i.x < max.x)
-            return i;
+            return new Vec3d(i);
 
         i = intersection(p0.z - max.z, pN.z - max.z, p0.x, p0.y, p0.z, pN.x, pN.y, pN.z);
         if (i != null && i.x > min.x && i.x < max.x && i.y > min.y && i.y < max.y)
-            return i;
+            return new Vec3d(i);
 
         return null;
+    }
+
+    public boolean intersection(com.extollit.linalg.mutable.Vec3d p0, com.extollit.linalg.mutable.Vec3d pN, SymmetricPair<com.extollit.linalg.immutable.Vec3d> out) {
+        final Vec3d
+                min = this.min,
+                max = this.max;
+
+        com.extollit.linalg.immutable.Vec3d test, arr[] = new com.extollit.linalg.immutable.Vec3d[2];
+        int i = 0;
+
+        test = intersection(p0.x - min.x, pN.x - min.x, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.y - min.y, pN.y - min.y, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.x > min.x && test.x < max.x)
+            arr[i++] = test;
+
+        test = intersection(p0.z - min.z, pN.z - min.z, p0, pN);
+        if (test != null && test.x > min.x && test.x < max.x && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.x - max.x, pN.x - max.x, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.y - max.y, pN.y - max.y, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.x > min.x && test.x < max.x)
+            arr[i++] = test;
+
+        test = intersection(p0.z - max.z, pN.z - max.z, p0, pN);
+        if (test != null && test.x > min.x && test.x < max.x && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        out.left = arr[0];
+        out.right = arr[1];
+
+        return i > 0;
+    }
+
+    public boolean intersection(com.extollit.linalg.immutable.Vec3d p0, com.extollit.linalg.immutable.Vec3d pN, SymmetricPair<com.extollit.linalg.immutable.Vec3d> out) {
+        final Vec3d
+                min = this.min,
+                max = this.max;
+
+        com.extollit.linalg.immutable.Vec3d test, arr[] = new com.extollit.linalg.immutable.Vec3d[2];
+        int i = 0;
+
+        test = intersection(p0.x - min.x, pN.x - min.x, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.y - min.y, pN.y - min.y, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.x > min.x && test.x < max.x)
+            arr[i++] = test;
+
+        test = intersection(p0.z - min.z, pN.z - min.z, p0, pN);
+        if (test != null && test.x > min.x && test.x < max.x && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.x - max.x, pN.x - max.x, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        test = intersection(p0.y - max.y, pN.y - max.y, p0, pN);
+        if (test != null && test.z > min.z && test.z < max.z && test.x > min.x && test.x < max.x)
+            arr[i++] = test;
+
+        test = intersection(p0.z - max.z, pN.z - max.z, p0, pN);
+        if (test != null && test.x > min.x && test.x < max.x && test.y > min.y && test.y < max.y)
+            arr[i++] = test;
+
+        out.left = arr[0];
+        out.right = arr[1];
+
+        return i > 0;
     }
 
     @Override
