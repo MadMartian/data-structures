@@ -8,25 +8,41 @@ import java.util.Iterator;
 public class DiscreteRayStepper implements Iterator<DiscreteRayStepper.Result> {
     public final class Result {
         public final com.extollit.linalg.immutable.Vec3i cell;
-        private com.extollit.linalg.immutable.Vec3d walker;
+        private double ldist;
 
-        protected Result(com.extollit.linalg.immutable.Vec3i cell, com.extollit.linalg.immutable.Vec3d walker) {
+        protected Result(com.extollit.linalg.immutable.Vec3i cell, double ldist) {
             this.cell = cell;
-            this.walker = walker;
+            this.ldist = ldist;
         }
 
         public com.extollit.linalg.immutable.Vec3d offset() {
-            final com.extollit.linalg.immutable.Vec3d
-                origin = DiscreteRayStepper.this.origin;
+            final com.extollit.linalg.immutable.Vec3d d = DiscreteRayStepper.this.direction;
+            final Vec3d p = new Vec3d(d);
+            p.mul(this.ldist);
 
-            final com.extollit.linalg.immutable.Vec3i
-                cell = this.cell;
+            final double
+                atx = partialRatio(p.x, d.x),
+                aty = partialRatio(p.y, d.y),
+                atz = partialRatio(p.z, d.z),
 
-            return new com.extollit.linalg.immutable.Vec3d(
-                cell.x - origin.x,
-                cell.y - origin.y,
-                cell.z - origin.z
-            );
+                t;
+
+            if (atx < aty)
+                if (atz < atx)
+                    t = atz;
+                else
+                    t = atx;
+            else if (aty < atz)
+                t = aty;
+            else
+                t = atz;
+
+            p.sub(d.x * t, d.y * t, d.z * t);
+            return new com.extollit.linalg.immutable.Vec3d(p);
+        }
+
+        protected double partialRatio(final double c, final double t) {
+            return Math.abs(t == 0 ? 2 : (c - (int)c) / t);
         }
     }
 
@@ -41,20 +57,25 @@ public class DiscreteRayStepper implements Iterator<DiscreteRayStepper.Result> {
     private double ldist, off;
 
     public DiscreteRayStepper(com.extollit.linalg.immutable.Vec3d origin,
+                              com.extollit.linalg.immutable.Vec3d target) {
+        this(origin, target.subOf(origin).normalized(), target);
+    }
+
+    public DiscreteRayStepper(com.extollit.linalg.immutable.Vec3d origin,
                               com.extollit.linalg.immutable.Vec3d direction,
                               com.extollit.linalg.immutable.Vec3d target) {
         this.origin = origin;
         this.cell =
             new Vec3i(
-                (int)Math.round(origin.x),
-                (int)Math.round(origin.y),
-                (int)Math.round(origin.z)
+                (int)Math.floor(origin.x),
+                (int)Math.floor(origin.y),
+                (int)Math.floor(origin.z)
             );
         this.target =
             new com.extollit.linalg.immutable.Vec3i(
-                (int)Math.round(target.x),
-                (int)Math.round(target.y),
-                (int)Math.round(target.z)
+                (int)Math.floor(target.x),
+                (int)Math.floor(target.y),
+                (int)Math.floor(target.z)
             );
 
         this.direction = direction;
@@ -131,7 +152,7 @@ public class DiscreteRayStepper implements Iterator<DiscreteRayStepper.Result> {
 
         return new Result(
             new com.extollit.linalg.immutable.Vec3i(cell),
-            new com.extollit.linalg.immutable.Vec3d(walker)
+            this.ldist
         );
     }
 
