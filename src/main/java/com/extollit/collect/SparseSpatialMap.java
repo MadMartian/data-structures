@@ -198,9 +198,12 @@ public class SparseSpatialMap<T> implements Map<Vec3i, T> {
     }
 
     public Iterable<T> cullOutside(IntAxisAlignedBox bounds) {
+        return cullOutside(bounds.min, bounds.max);
+    }
+    public Iterable<T> cullOutside(Vec3i boundsMin, Vec3i boundsMax) {
         final LesserCoarseKey
-                min = lesserKey(bounds.min),
-                max = lesserKey(bounds.max);
+                min = lesserKey(boundsMin),
+                max = lesserKey(boundsMax);
 
         final int size0 = this.size;
         final List<Collection<T>> cullees = new LinkedList<Collection<T>>();
