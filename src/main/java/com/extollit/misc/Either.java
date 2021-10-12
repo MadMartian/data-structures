@@ -7,7 +7,7 @@ package com.extollit.misc;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 21/09/16.
  */
 public final class Either<A, B> {

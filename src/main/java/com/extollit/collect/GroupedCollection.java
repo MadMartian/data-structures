@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 16/10/16.
  */
 public abstract class GroupedCollection< K, E, Out > extends MultiMap< K, Out, Collection< Out > > {

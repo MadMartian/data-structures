@@ -11,7 +11,7 @@ import java.util.*;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 25/12/16.
  */
 public class CollectionGenerators {

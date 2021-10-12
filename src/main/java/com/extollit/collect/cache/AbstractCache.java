@@ -7,11 +7,11 @@ import java.util.*;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 17/02/16.
- * <p/>
+ *
  * Copyright (c) 2016 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 abstract class AbstractCache<K, V, R extends Reference<V>> implements ICache<K, V> {

@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 29/07/16.
  */
 public abstract class AdapterIterable<A, B> implements Iterable<A>, ITypeMappable< A, B > {

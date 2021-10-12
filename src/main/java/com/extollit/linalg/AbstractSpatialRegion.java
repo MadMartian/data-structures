@@ -10,7 +10,7 @@ import com.extollit.linalg.mutable.Vec3i;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 12/09/16.
  */
 public abstract class AbstractSpatialRegion implements ISpatialRegion {

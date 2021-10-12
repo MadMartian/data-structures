@@ -22,7 +22,7 @@ import static junit.framework.Assert.*;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 05/12/16.
  */
 public class OctTreeTests {

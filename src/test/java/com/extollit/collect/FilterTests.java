@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 31/07/16.
  */
 public class FilterTests {

@@ -5,11 +5,11 @@ import java.util.Iterator;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathann on 15-09-25.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public abstract class XFormIterable< Out, In > implements Iterable< Out >, IXFormer< Out, In >, IFilter< In > {

@@ -9,11 +9,11 @@ import java.util.List;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathann on 15-11-19.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class CombinationsTests {

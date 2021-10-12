@@ -6,11 +6,11 @@ import java.util.Map;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 17/02/16.
- * <p/>
+ *
  * Copyright (c) 2016 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class SoftCache<K, V> extends AbstractCache<K, V, SoftReference<V>> implements ICache<K, V> {

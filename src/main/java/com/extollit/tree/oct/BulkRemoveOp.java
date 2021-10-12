@@ -13,7 +13,7 @@ import java.util.Set;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 22/02/17.
  */
 final class BulkRemoveOp<T> implements IOctantOperation<T> {

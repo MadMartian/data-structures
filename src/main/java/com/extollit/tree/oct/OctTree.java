@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 28/11/16.
  */
 public class OctTree< T > {

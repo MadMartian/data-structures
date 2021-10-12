@@ -7,7 +7,7 @@ package com.extollit.tree.oct;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 22/02/17.
  */
 final class AddEntryOctantOp<T> extends AbstractAutoEntryOp<T> {

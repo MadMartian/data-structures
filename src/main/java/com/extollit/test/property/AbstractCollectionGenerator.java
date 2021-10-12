@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 25/12/16.
  */
 abstract class AbstractCollectionGenerator<T, C extends Collection<T>> implements IGenerator<C> {

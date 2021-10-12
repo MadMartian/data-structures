@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 29/07/16.
  */
 public class RingIterator<T> implements Iterator<T> {

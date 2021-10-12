@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 31/07/16.
  */
 public class SymmetricPairTests {

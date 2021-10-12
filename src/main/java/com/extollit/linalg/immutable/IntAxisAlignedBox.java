@@ -12,7 +12,7 @@ import static java.lang.Math.abs;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 28/11/16.
  */
 public class IntAxisAlignedBox extends AbstractSpatialRegion implements ISpatialRegion {

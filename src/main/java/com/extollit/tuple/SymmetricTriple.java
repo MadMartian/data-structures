@@ -7,11 +7,11 @@ import java.util.Set;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 19/02/16.
- * <p/>
+ *
  * Copyright (c) 2016 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class SymmetricTriple< T > extends Triple< T, T, T > implements TripleContract< T > {

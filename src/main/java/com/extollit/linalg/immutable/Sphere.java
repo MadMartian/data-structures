@@ -12,7 +12,7 @@ import java.text.MessageFormat;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 12/09/16.
  */
 public final class Sphere extends AbstractSpatialRegion implements ISpatialRegion {

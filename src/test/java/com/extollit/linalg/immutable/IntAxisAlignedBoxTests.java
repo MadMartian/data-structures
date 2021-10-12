@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 16/12/16.
  */
 public class IntAxisAlignedBoxTests {

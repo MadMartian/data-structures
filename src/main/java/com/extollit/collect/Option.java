@@ -9,11 +9,11 @@ import java.util.NoSuchElementException;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 16/01/16.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class Option<T> extends AbstractCollection<T> implements IOption<T> {

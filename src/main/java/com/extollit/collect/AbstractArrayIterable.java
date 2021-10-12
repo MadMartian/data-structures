@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 29/07/16.
  */
 abstract class AbstractArrayIterable<A, B> implements Iterable<A> {

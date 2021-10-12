@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 22/02/17.
  */
 interface IIterationOctantOperation<T> extends IOctantOperation<T> {

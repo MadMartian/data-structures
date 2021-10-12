@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 22/02/17.
  */
 abstract class AbstractIterationOctantOp<T> implements IOctantOperation<T>,IIterationOctantOperation<T> {

@@ -5,11 +5,11 @@ import java.util.Set;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 17/02/16.
- * <p/>
+ *
  * Copyright (c) 2016 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public interface ICache<K, V> extends Iterable<Map.Entry<K, V>> {

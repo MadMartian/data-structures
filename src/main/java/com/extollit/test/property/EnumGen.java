@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 25/12/16.
  */
 public final class EnumGen<E extends Enum<E>> implements IGenerator<E> {

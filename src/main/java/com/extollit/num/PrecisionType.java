@@ -4,11 +4,11 @@ import java.text.MessageFormat;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 12/02/16.
- * <p/>
+ *
  * Copyright (c) 2016 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class PrecisionType {

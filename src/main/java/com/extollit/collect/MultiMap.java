@@ -6,11 +6,11 @@ import java.util.Map;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathann on 15-10-23.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public abstract class MultiMap<K, E, C extends Collection<E>> extends Hashtable<K, C> {

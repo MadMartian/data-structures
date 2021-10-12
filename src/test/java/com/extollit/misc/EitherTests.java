@@ -10,7 +10,7 @@ import org.junit.Test;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 05/12/16.
  */
 public class EitherTests {

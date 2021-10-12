@@ -9,7 +9,7 @@ import java.text.MessageFormat;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 28/11/16.
  */
 public class IntList {

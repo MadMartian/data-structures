@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 14/05/16.
  */
 public class ZipIterable< L, R > implements Iterable< Pair.Sealed< L, R > > {

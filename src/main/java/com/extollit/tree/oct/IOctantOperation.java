@@ -9,7 +9,7 @@ import com.extollit.linalg.mutable.Vec3i;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 22/02/17.
  */
 interface IOctantOperation<T> {

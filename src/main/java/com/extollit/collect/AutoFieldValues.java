@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 26/11/16.
  */
 public class AutoFieldValues<T> extends AbstractList<T> implements List<T> {

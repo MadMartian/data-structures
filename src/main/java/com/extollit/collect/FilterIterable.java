@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 29/07/16.
  */
 public abstract class FilterIterable<E> implements Iterable<E> {

@@ -26,6 +26,10 @@ signing {
 	sign configurations.archives
 }
 
+task shipDoc(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
 task shipSrc(type: Jar) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
@@ -34,6 +38,7 @@ task shipSrc(type: Jar) {
 artifacts {
 	archives jar
 	archives shipSrc
+    archives shipDoc
 }
 
 uploadArchives {

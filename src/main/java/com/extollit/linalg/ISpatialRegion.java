@@ -12,7 +12,7 @@ import com.extollit.linalg.immutable.Vec2d;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 12/09/16.
  */
 public interface ISpatialRegion {

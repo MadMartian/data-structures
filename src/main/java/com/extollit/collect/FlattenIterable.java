@@ -5,11 +5,11 @@ import java.util.Iterator;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathann on 15-10-29.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class FlattenIterable<T> implements Iterable<T> {

@@ -8,11 +8,11 @@ import java.util.List;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathan on 15-11-19.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class Combinations<T> {
@@ -31,7 +31,7 @@ public class Combinations<T> {
     /**
      * Compute the number of n-tuple combinations
      *
-     * @param tupleSize The size of the combination tuple, must be > 0 and <= delegate size
+     * @param tupleSize The size of the combination tuple, must be &gt; 0 and &lt;= delegate size
      * @return Iterator for all n-tuple combinations of the underlying list
      */
     public Iterable<List<T>> tupleCombinations(final int tupleSize) {

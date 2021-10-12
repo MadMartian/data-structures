@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 24/12/16.
  */
 public class UniqueIterable<E> extends FilterIterable<E> {

@@ -5,11 +5,11 @@ import java.util.Map;
 
 /**
  * MadMartian Mod
- * <p/>
+ *
  * Created by jonathann on 15-10-23.
- * <p/>
+ *
  * Copyright (c) 2015 extollIT Enterprises
- * <p/>
+ *
  * THIS IS PROPRIETARY SOFTWARE, DO NOT DISTRIBUTE
  */
 public class LinkedListMultiMap<K, V> extends MultiMap<K, V, LinkedList<V>> {

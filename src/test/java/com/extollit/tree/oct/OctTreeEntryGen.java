@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  * main
- * <p/>
+ *
  * Created by jonathan on 25/12/16.
  */
 public class OctTreeEntryGen<T> implements IGenerator<OctTree.Entry<T>> {

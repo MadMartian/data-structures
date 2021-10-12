@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * MadMartianMod
- * <p/>
+ *
  * Created by jonathan on 29/07/16.
  */
 public final class KeyedArrayIterable<T> extends AbstractArrayIterable<KeyedArrayIterable.Entry<T>, T> {
