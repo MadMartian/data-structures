@@ -7,7 +7,7 @@ repositories {
 
 group 'com.extollit'
 description = "A set of reusable and common utilities, FP helpers, linear algebra, and high-performance storage types for use in my other projects"
-version '2.14'
+version '2.15'
 
 apply plugin: 'java'
 apply plugin: 'signing'

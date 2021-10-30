@@ -54,8 +54,10 @@ public abstract class AbstractPurgeThread< O > extends Thread {
                             }
 
                             object = weakCache.get();
-                            if (object == null)
+                            if (object == null) {
                                 i.remove();
+                                this.current = null;
+                            }
                         }
 
                         if (object != null) {
