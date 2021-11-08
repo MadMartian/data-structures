@@ -7,7 +7,7 @@ repositories {
 
 group 'com.extollit'
 description = "A set of reusable and common utilities, FP helpers, linear algebra, and high-performance storage types for use in my other projects"
-version '2.15'
+version '2.16'
 
 apply plugin: 'java'
 apply plugin: 'signing'
@@ -20,6 +20,7 @@ dependencies {
 	testCompile group: 'net.jqwik', name: 'jqwik', version: '1.3.0'
 
     compile group: "org.apache.logging.log4j", name: "log4j-api", version: "2.0-beta9"
+    compile group: 'commons-net', name: 'commons-net', version: '3.6'
 }
 
 signing {
