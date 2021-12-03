@@ -10,7 +10,10 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Properties;
 
 public class TimeSystem {
     private static final Logger logger = LogManager.getLogger("Time System");
@@ -52,34 +55,35 @@ public class TimeSystem {
         @Override
         public void run() {
             offset = CONFIGURED_OFFSET;
+
+            if (this.hostNames.isEmpty())
+                logger.error("Time system shutting down, no NTP hosts configured");
+
             try {
-                final Iterator<String> i = this.hostNames.iterator();
-                while (i.hasNext()) {
-                    final String hostName = i.next();
+                do {
+                    for (String hostName : this.hostNames) {
+                        try {
+                            final InetAddress host = InetAddress.getByName(hostName);
+                            final TimeInfo time = this.client.getTime(host);
+                            time.computeDetails();
+                            final Long offset = time.getOffset();
+                            if (offset == null)
+                                throw new IllegalArgumentException("Missing time offset");
 
-                    try {
-                        final InetAddress host = InetAddress.getByName(hostName);
-                        final TimeInfo time = this.client.getTime(host);
-                        time.computeDetails();
-                        final Long offset = time.getOffset();
-                        if (offset == null)
-                            throw new IllegalArgumentException("Missing time offset");
+                            TimeSystem.this.offset = offset;
+                        } catch (UnknownHostException e) {
+                            logger.warn("Unable to resolve host {}, skipping", hostName);
+                        } catch (IOException e) {
+                            logger.warn("I/O error from host {}, skipping - {}", hostName, e.getMessage());
+                        } catch (IllegalArgumentException e) {
+                            logger.error("Unsatisfied condition, illegal argument computing time delta from host {}, skipping - {}", hostName, e.getMessage());
+                        }
 
-                        TimeSystem.this.offset = offset;
-                    } catch (UnknownHostException e) {
-                        logger.warn("Unable to resolve host {}, skipping", hostName);
-                    } catch (IOException e) {
-                        logger.warn("I/O error from host {}, skipping - {}", hostName, e.getMessage());
-                    } catch (IllegalArgumentException e) {
-                        logger.error("Unsatisfied condition, illegal argument computing time delta from host {}, skipping - {}", hostName, e.getMessage());
+                        sleep(this.sleep);
                     }
-
-                    sleep(this.sleep);
-                }
-
-                logger.info("Time system shutting down, no more NTP hosts avaliable");
+                } while (true);
             } catch (InterruptedException e) {
-                logger.info("Time system shutting down, interrupted");
+                logger.warn("Time system shutting down, interrupted");
             }
         }
 
@@ -90,7 +94,7 @@ public class TimeSystem {
 
     public static void start() {
         if (INSTANCE != null) {
-            logger.info("Time system starting up...");
+            logger.info("Time system starting up with hosts {}", INSTANCE.ntp.hostNames);
             INSTANCE.ntp.start();
         } else
             logger.error("Cannot start NTP background worker, failed to initialize");
