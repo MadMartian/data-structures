@@ -4,8 +4,8 @@ import com.extollit.collect.RingBuffer;
 import com.extollit.temporal.Duration;
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class TimeSystem {
-    private static final Logger logger = LogManager.getLogger("Time System");
+    private static final Logger logger = LoggerFactory.getLogger("Time System");
 
     private static final TimeSystem INSTANCE;
     private static final int CONFIGURED_OFFSET = configuredOffset();
